@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render NotFoundPage component 1`] = `
+<div>
+  <p>
+    Looks like you are lost!
+  </p>
+  <Link
+    to="/"
+  >
+    Dashboard
+  </Link>
+</div>
+`;
