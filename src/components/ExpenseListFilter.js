@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css';
-import 'react-dates/initialize'
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../redux/actions/filtersActions'
 
 class ExpenseListFilter extends Component {
