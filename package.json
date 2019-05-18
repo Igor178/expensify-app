@@ -7,7 +7,9 @@
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev": "webpack-dev-server",
-    "test": "jest --config=jest.config.json --watchAll"
+    "test": "jest --config=jest.config.json --watchAll",
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn build:prod"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -22,6 +24,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "enzyme-to-json": "^3.3.5",
+    "express": "^4.17.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "jest": "^24.8.0",
     "moment": "^2.24.0",
