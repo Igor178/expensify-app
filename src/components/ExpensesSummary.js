@@ -7,9 +7,8 @@ import { connect } from 'react-redux';
 
 
 const ExpensesSummary = props => (
-    console.log(props.expenses.length),
     <div>
-        <p>Viewing {props.expenses.length} expenses totalling {numeral(getExpensesTotal(props.expenses) / 100).format('$0,0.00')}</p>
+        <h2>Viewing {props.expenses.length} {props.expenses.length === 1 ? 'expense' : 'expenses'} totalling {numeral(getExpensesTotal(props.expenses) / 100).format('$0,0.00')}</h2>
     </div>
 )
 
