@@ -1,4 +1,4 @@
-import { ADD_EXPENSE, REMOVE_EXPENSE, EDIT_EXPENSE } from '../actions/types'
+import { ADD_EXPENSE, REMOVE_EXPENSE, EDIT_EXPENSE, GET_EXPENSES } from '../actions/types'
 
 const initialState = []
 
@@ -22,6 +22,8 @@ const expensesReducer = (state = initialState, action) => {
                     return expense
                 }
             })
+        case GET_EXPENSES:
+            return action.expenses
         default:
             return state
     }

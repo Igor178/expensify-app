@@ -1,6 +1,7 @@
 import db from '../../firebase/firebase'
-import { ADD_EXPENSE, REMOVE_EXPENSE, EDIT_EXPENSE } from './types'
+import { ADD_EXPENSE, REMOVE_EXPENSE, EDIT_EXPENSE, GET_EXPENSES } from './types'
 
+// Adding expense to Firebase
 export const addExpense = (expense) => {
     return {
         type: ADD_EXPENSE,
@@ -21,6 +22,7 @@ export const startAddExpense = (expense = {}) => dispatch => {
     }))).catch(err => console.log('Something went wrong' + err))
 }
 
+// Removing Expense from firebase
 export const removeExpense = (id) => {
     return {
         type: REMOVE_EXPENSE,
@@ -28,11 +30,41 @@ export const removeExpense = (id) => {
     }
 }
 
+export const startRemoveExpense = () => dispatch => {
+    
+}
+
+// Editing Expense from Firebase
 export const editExpense = (id, updates) => {
     return {
         type: EDIT_EXPENSE,
         id,
         updates
     }
+}
+
+// Fetching Expenses from Firebase
+export const getExpenses = (expenses) => {
+    return {
+        type: GET_EXPENSES,
+        expenses
+    }
+}
+
+export const startGetExpenses = () => dispatch => {
+    return db.ref('expenses')
+     .once('value')
+     .then(snapshot => {
+         let expenses = []
+
+         snapshot.forEach(childSnapshot => {
+             expenses.push({
+                 id: childSnapshot.key, // this is the unique id that get's generated when using push method()
+                 ...childSnapshot.val()
+             })
+         })
+
+         dispatch(getExpenses(expenses))
+     })
 }
 
