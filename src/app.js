@@ -7,7 +7,7 @@ import { startGetExpenses } from './redux/actions/expensesActions'
 import './styles/style.scss'
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize'
-import './firebase/firebase'
+import { firebase } from './firebase/firebase'
 
 const jsx = (
     <Provider store={store}>
@@ -19,5 +19,14 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
 store.dispatch(startGetExpenses()).then(() => {
     ReactDOM.render(jsx, document.getElementById('app'))
+})
+
+// Check authentication status
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        console.log('log in')
+    } else {
+        console.log('log out')
+    }
 })
 

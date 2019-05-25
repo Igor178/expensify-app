@@ -14,7 +14,9 @@ const firebaseConfig = {
 // Connecting to Firebase
 firebase.initializeApp(firebaseConfig);
 
-// referecing database to db variable
+// referencing database to db variable
 const db = firebase.database()
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
-export { firebase, db as default }
+
+export { firebase, googleAuthProvider, db as default }

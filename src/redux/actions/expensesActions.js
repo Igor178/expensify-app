@@ -16,10 +16,12 @@ export const startAddExpense = (expense = {}) => dispatch => {
     // store values in expenseData object
     const expenseData = { description, notes, amount ,createdAt }
     // store expenseData object to the firebase && dispatching addExpense action to the redux store + use ref.key to grab unique indentifier from firebase
-    db.ref('expenses').push(expenseData).then(ref => dispatch(addExpense({
-        id: ref.key,
-        ...expenseData
-    }))).catch(err => console.log('Something went wrong' + err))
+    db.ref('expenses').push(expenseData)
+        .then(ref => dispatch(addExpense({
+            id: ref.key,
+            ...expenseData
+        })))
+        .catch(err => console.log('Something went wrong' + err))
 }
 
 // Removing Expense from firebase
@@ -31,7 +33,10 @@ export const removeExpense = (id) => {
 }
 
 export const startRemoveExpense = (id) => dispatch => {
-    db.ref(`expenses/${id}`).remove().then(() => dispatch(removeExpense(id)))
+    db.ref(`expenses/${id}`)
+        .remove()
+        .then(() => dispatch(removeExpense(id)))
+        .catch(err => console.log('Something went wrong' + err))
 }
 
 // Editing Expense from Firebase
@@ -44,7 +49,10 @@ export const editExpense = (id, updates) => {
 }
 
 export const startEditExpense = (id, updates) => dispatch => {
-    db.ref(`expenses/${id}`).update(updates).then(() => dispatch(editExpense(id, updates)))
+    db.ref(`expenses/${id}`)
+        .update(updates)
+        .then(() => dispatch(editExpense(id, updates)))
+        .catch(err => console.log('Something went wrong' + err))
 }
 
 // Fetching Expenses from Firebase
@@ -69,6 +77,6 @@ export const startGetExpenses = () => dispatch => {
          })
 
          dispatch(getExpenses(expenses))
-     })
+     }).catch(err => console.log('Something went wrong' + err))
 }
 
