@@ -30,8 +30,8 @@ export const removeExpense = (id) => {
     }
 }
 
-export const startRemoveExpense = () => dispatch => {
-    
+export const startRemoveExpense = (id) => dispatch => {
+    db.ref(`expenses/${id}`).remove().then(() => dispatch(removeExpense(id)))
 }
 
 // Editing Expense from Firebase
@@ -41,6 +41,10 @@ export const editExpense = (id, updates) => {
         id,
         updates
     }
+}
+
+export const startEditExpense = (id, updates) => dispatch => {
+    db.ref(`expenses/${id}`).update(updates).then(() => dispatch(editExpense(id, updates)))
 }
 
 // Fetching Expenses from Firebase

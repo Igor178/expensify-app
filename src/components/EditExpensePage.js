@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { editExpense, removeExpense } from '../redux/actions/expensesActions'
+import { startEditExpense, startRemoveExpense } from '../redux/actions/expensesActions'
 import PropTypes from 'prop-types'
 import ExpenseForm from './ExpenseForm'
 
@@ -9,20 +9,20 @@ const EditExpensePage = (props) => (
         <ExpenseForm 
             expense={props.expense}
             onSubmit={expense => {
-                props.editExpense(props.expense.id, expense)
+                props.startEditExpense(props.expense.id, expense)
                 props.history.push('/')
             }}
         />
         <button onClick={() => {
-            props.removeExpense(props.expense.id)
+            props.startRemoveExpense(props.expense.id)
             props.history.push('/')
         }}>Remove</button>
     </div>
 )
 
 EditExpensePage.proptypes = {
-    editExpense: PropTypes.func.isRequired,
-    removeExpense: PropTypes.func.isRequired,
+    startEditExpense: PropTypes.func.isRequired,
+    startRemoveExpense: PropTypes.func.isRequired,
     expense: PropTypes.shape({
         amount: PropTypes.number,
         notes: PropTypes.string,
@@ -38,8 +38,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        editExpense: (id, updates) => dispatch(editExpense(id, updates)),
-        removeExpense: id => dispatch(removeExpense(id))
+        startEditExpense: (id, updates) => dispatch(startEditExpense(id, updates)),
+        startRemoveExpense: id => dispatch(startRemoveExpense(id))
     }
 }
 
