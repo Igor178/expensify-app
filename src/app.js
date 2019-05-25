@@ -6,6 +6,7 @@ import store from './redux/store'
 import './styles/style.scss'
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize'
+import './firebase/firebase'
 
 const jsx = (
     <Provider store={store}>

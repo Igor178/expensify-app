@@ -1,15 +1,15 @@
 import React from 'react'
 import ExpenseForm from './ExpenseForm'
 import { connect } from 'react-redux'
-import { addExpense, editExpense } from '../redux/actions/expensesActions'
+import { startAddExpense, editExpense } from '../redux/actions/expensesActions'
 import PropTypes from 'prop-types'
 
-const CreateExpensePage = ({ addExpense, history }) => (
+const CreateExpensePage = ({ startAddExpense, history }) => (
     <div>
         <h1>Add Expense</h1>
         <ExpenseForm 
             onSubmit={(expense) => {
-                addExpense(expense)
+                startAddExpense(expense)
                 history.push('/')
             }}
         />
@@ -17,13 +17,13 @@ const CreateExpensePage = ({ addExpense, history }) => (
 )
 
 CreateExpensePage.propTypes = {
-    addExpense: PropTypes.func.isRequired,
+    startAddExpense: PropTypes.func.isRequired,
     editExpense: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addExpense: data => dispatch(addExpense(data)),
+        startAddExpense: data => dispatch(startAddExpense(data)),
         editExpense: data => dispatch(editExpense(data))
     }
 }

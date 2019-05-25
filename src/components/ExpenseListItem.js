@@ -4,8 +4,6 @@ import numeral from 'numeral'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-console.log(numeral(2000).format('$0,0.00'))
-
 const ExpenseListItem = ({ description, amount, createdAt, id }) => {
     return (
         <div>

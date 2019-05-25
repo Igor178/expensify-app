@@ -1,19 +1,13 @@
-import { createStore, combineReducers } from 'redux'
-import expensesReducer from './reducers/expensesReducer'
-import filtersReducer from './reducers/filtersReducer'
-import { addExpense, removeExpense, editExpense } from './actions/expensesActions'
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from './actions/filtersActions'
-import { getVisibleExpenses } from '../utils/filterExpenses'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import rootReducer from './reducers/index'
 
-const store = createStore(combineReducers({
-        expenses: expensesReducer,
-        filters: filtersReducer
-    }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(thunk))
 )
-
-
-
 
 export default store
 
