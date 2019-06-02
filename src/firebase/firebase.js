@@ -16,7 +16,8 @@ firebase.initializeApp(firebaseConfig);
 
 // referencing database to db variable
 const db = firebase.database()
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider().setCustomParameters({
+    'prompt': 'select_account'
+})
 
-
-export { firebase, googleAuthProvider, db as default }
+export { firebase, googleAuthProvider, firebaseConfig, db as default }

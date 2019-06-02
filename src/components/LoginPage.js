@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { startLogin } from '../redux/actions/authActions'
 
-const LoginPage = props => (
-    <button onClick={() => props.startLogin()}>Login</button>
+const LoginPage = ({ startLogin }) => (
+    <div>    
+        <button onClick={startLogin}>Login</button>
+    </div>
 )
 
 LoginPage.propTypes = {

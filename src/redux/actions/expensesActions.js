@@ -12,7 +12,7 @@ export const addExpense = (expense) => {
 // Async call with redux thunk && Storing the expense to the firebase
 export const startAddExpense = (expense = {}) => dispatch => {
     // Destructure the object and setup default values
-    const { description = '', notes = '', amount = 0, createdAt = 0} = expense
+    const { description = '', notes = '', amount = 0, createdAt = 0 } = expense
     // store values in expenseData object
     const expenseData = { description, notes, amount ,createdAt }
     // store expenseData object to the firebase && dispatching addExpense action to the redux store + use ref.key to grab unique indentifier from firebase

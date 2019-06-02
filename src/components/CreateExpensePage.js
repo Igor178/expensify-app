@@ -10,7 +10,7 @@ const CreateExpensePage = ({ startAddExpense, history }) => (
         <ExpenseForm 
             onSubmit={(expense) => {
                 startAddExpense(expense)
-                history.push('/')
+                history.push('/dashboard')
             }}
         />
     </div>
