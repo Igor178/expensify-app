@@ -9,14 +9,15 @@ export const addExpense = (expense) => {
     }
 }
 
-// Async call with redux thunk && Storing the expense to the firebase
-export const startAddExpense = (expense = {}) => dispatch => {
+// Async call with redux thunk && Storing the expense to the firebase --> calling getState with redux thunk will get you the current state
+export const startAddExpense = (expense = {}) => (dispatch, getState) => {
+    const uid = getState().auth.isAuthenticated
     // Destructure the object and setup default values
     const { description = '', notes = '', amount = 0, createdAt = 0 } = expense
     // store values in expenseData object
     const expenseData = { description, notes, amount ,createdAt }
     // store expenseData object to the firebase && dispatching addExpense action to the redux store + use ref.key to grab unique indentifier from firebase
-    db.ref('expenses').push(expenseData)
+    db.ref(`users/${uid}/expenses`).push(expenseData)
         .then(ref => dispatch(addExpense({
             id: ref.key,
             ...expenseData
@@ -32,8 +33,10 @@ export const removeExpense = (id) => {
     }
 }
 
-export const startRemoveExpense = (id) => dispatch => {
-    db.ref(`expenses/${id}`)
+export const startRemoveExpense = (id) => (dispatch, getState) => {
+    const uid = getState().auth.isAuthenticated
+
+    db.ref(`users/${uid}/expenses/${id}`)
         .remove()
         .then(() => dispatch(removeExpense(id)))
         .catch(err => console.log('Something went wrong' + err))
@@ -48,8 +51,10 @@ export const editExpense = (id, updates) => {
     }
 }
 
-export const startEditExpense = (id, updates) => dispatch => {
-    db.ref(`expenses/${id}`)
+export const startEditExpense = (id, updates) => (dispatch, getState) => {
+    const uid = getState().auth.isAuthenticated
+
+    db.ref(`users/${uid}/expenses/${id}`)
         .update(updates)
         .then(() => dispatch(editExpense(id, updates)))
         .catch(err => console.log('Something went wrong' + err))
@@ -63,8 +68,9 @@ export const getExpenses = (expenses) => {
     }
 }
 
-export const startGetExpenses = () => dispatch => {
-    return db.ref('expenses')
+export const startGetExpenses = () => (dispatch, getState) => {
+    const uid = getState().auth.isAuthenticated
+    return db.ref(`users/${uid}/expenses`)
      .once('value')
      .then(snapshot => {
          let expenses = []
@@ -79,4 +85,5 @@ export const startGetExpenses = () => dispatch => {
          dispatch(getExpenses(expenses))
      }).catch(err => console.log('Something went wrong' + err))
 }
+
 
