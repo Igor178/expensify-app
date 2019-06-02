@@ -5,7 +5,7 @@ import { startLogin } from '../redux/actions/authActions'
 
 const LoginPage = ({ startLogin }) => (
     <div>    
-        <button onClick={startLogin}>Login</button>
+        <button onClick={startLogin}>Sign Up</button>
     </div>
 )
 
