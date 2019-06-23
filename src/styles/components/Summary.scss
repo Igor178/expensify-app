@@ -1,0 +1,23 @@
+.summary-content__wrapper {
+    background: $light-grey;
+}
+
+.summary-content {
+    padding: 40px 0;
+
+    .summary-content__title {
+        font-weight: 300;
+        margin-bottom: 25px;
+    }
+
+    .summary-content__btn {
+        text-decoration: none !important;
+        font-size: 1.2rem;
+        padding: 10px;
+        background: $dark-grey;
+        color: white;
+        cursor: pointer;
+        font-weight: 300;
+
+    }
+}

@@ -6,11 +6,15 @@ import { startLogOut } from '../redux/actions/authActions'
 
 const Header = ({ startLogOut }) => (
     <header>
-        <h1>Expensify App</h1>
-        <NavLink to='/dashboard' activeClassName='active' exact>Dashboard</NavLink>
-        <NavLink to='/create-expense' activeClassName='active'>Create Expense</NavLink>
-        <NavLink to='/help' activeClassName='active'>Help</NavLink>
-        <button onClick={startLogOut}>Sign Out</button>
+        <div className='content-container'>
+            <div className='header-content'>
+                <NavLink id='logo' to='/dashboard' exact>
+                    <h1>Expensify App</h1>
+                </NavLink>            
+                {/*<NavLink to='/help' activeClassName='active'>Help</NavLink>*/}
+                <button onClick={startLogOut} className='header-content__logout-btn'>Sign Out</button>
+            </div>
+        </div>
     </header>
 )
 
