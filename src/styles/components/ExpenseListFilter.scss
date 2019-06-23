@@ -1,0 +1,34 @@
+.filters-container {
+    margin: 25px 0;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+
+    .filters-container__search-input {
+        height: 50px;
+        border: 1px solid $border-grey;
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 1rem;
+    }
+
+    .filters-container__dropdown {
+        border: 1px solid $border-grey;
+        height: 50px;
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 1rem;
+        margin: 0px 15px;
+    }
+}
+
+// Media query
+@media only screen and (max-width: 764px) {
+    .filters-container {
+        flex-direction: column;
+    }
+
+    .filters-container__dropdown {
+        margin: 15px 0px !important
+    }
+  }

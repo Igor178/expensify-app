@@ -1,0 +1,18 @@
+.expense-list__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    padding: 1rem;
+    color: #666;
+}
+
+.expense-box__message {
+    text-align: center;
+    padding: 1.3rem;
+    color: #666;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+}

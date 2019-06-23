@@ -5,16 +5,24 @@ import ExpenseListItem from './ExpenseListItem'
 import { getVisibleExpenses } from '../utils/filterExpenses'
 
 export const ExpenseList = props => (
-    <div>
-        {
-         props.expenses.length === 0 ? (
-            <p>No expenses</p>
-         ) : (
-            props.expenses.map(expense => {
-                return <ExpenseListItem key={expense.id} {...expense}/>
-            })
-         )
-        }
+    <div className='content-container'>
+        <div className='expense-list'>
+            <div className='expense-list__header'>
+                <p>Expense</p>
+                <p>Amount</p>
+            </div>
+            
+                {
+                props.expenses.length === 0 ? (
+                    <p className='expense-box__message'>No expenses</p>
+                ) : (
+                    props.expenses.map(expense => {
+                        return <ExpenseListItem key={expense.id} {...expense}/>
+                    })
+                )
+                }
+          
+        </div>
     </div>
 )
 

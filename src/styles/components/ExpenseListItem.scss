@@ -1,0 +1,25 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.3rem;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+    transition: background .3s ease;
+}
+
+.list-item:hover {
+    background-color: #f7f7f7
+}
+
+.list-item__description {
+    margin-bottom: 10px;
+}
+
+.list-item__date {
+    color: #666;
+    opacity: 0.8;
+}

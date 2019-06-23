@@ -3,8 +3,18 @@
 @import './components/Header.scss';
 @import './components/LoginPage.scss';
 @import './components/Summary.scss';
+@import './components/ExpenseListFilter.scss';
+@import './components/ExpenseList.scss';
+@import './components/ExpenseListItem.scss';
 
+// .DateInput_input {
+//     width: 108px !important
+// }
 
-.DateInput_input {
-    width: 108px !important
+.DateRangePickerInput {
+    background-color: white;
+    border: 1px solid $border-grey;
+    display: inline-block;
+    height: 50px;
+    border-radius: 0px !important
 }
